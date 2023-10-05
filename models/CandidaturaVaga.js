@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const CurtidaVaga = new mongoose.Schema(
+const CandidaturaVaga = new mongoose.Schema(
     {
         user: {
             type: mongoose.Schema.Types.ObjectId,
@@ -16,4 +16,4 @@ const CurtidaVaga = new mongoose.Schema(
     { timestamps: true }
 ); 
 
-export default mongoose.model("CurtidaVaga", CurtidaVaga);
+export default mongoose.model("CandidaturaVaga", CandidaturaVaga);
