@@ -23,6 +23,5 @@
     "mongoose": "^7.3.1",
     "ncp": "^2.0.0",
     "nodemon": "^2.0.22"
-  },
-  "proxy": "https://node4-2o2f.onrender.com"
+  }
 }

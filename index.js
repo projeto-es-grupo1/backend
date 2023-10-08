@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
+import authRoute from "./routes/auth.js";
 
 const app = express();
 dotenv.config();
@@ -28,7 +29,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 // Rotas Aqui
-// app.use("/auth", authRoute);
+app.use("/api/auth", authRoute);
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;

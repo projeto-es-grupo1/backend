@@ -2,30 +2,31 @@ import mongoose from "mongoose";
 
 const PerfilUser = new mongoose.Schema(
     {
-        lab: {
+        user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
             required: true,
+            unique: true
         },
         nome : {
             type: String,
-            required: true,
+            required: false,
         },
         email : {
             type: String,
-            required: true,
+            required: false,
         },
         telefone : {
             type: String,
-            required: true,
+            required: false,
         },
         maior_de_idade : {
             type: Boolean,
-            required: true,
+            required: false,
         },
         habilidades : {
             type: [String],
-            required: true,
+            required: false,
         },
         interesses : {
             type: [String],
@@ -33,19 +34,19 @@ const PerfilUser = new mongoose.Schema(
         },
         disponibilidade_remoto: {
             type: Boolean,
-            required: true
+            required: false
         },
         disponibilidade_presencial: {
             type: Boolean,
-            required: true
+            required: false
         },
         motivacao: {
             type: String,
-            required: true
+            required: false
         },
         focando_em: {
             type: [String],
-            required: true
+            required: false
         }
     },
     { timestamps: true }
