@@ -6,6 +6,7 @@ import cors from "cors";
 
 import authRoute from "./routes/auth.js";
 import certificadoRoute from "./routes/certificadoUser.js";
+import curriculoRoute from "./routes/curriculo.js";
 
 const app = express();
 dotenv.config();
@@ -32,6 +33,7 @@ app.use(express.json());
 // Rotas Aqui
 app.use("/api/auth", authRoute);
 app.use("/api/certificados", certificadoRoute);
+app.use("/api/curriculos", curriculoRoute);
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;

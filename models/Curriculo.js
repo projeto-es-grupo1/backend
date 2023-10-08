@@ -8,7 +8,7 @@ const CurriculoUser = new mongoose.Schema(
             unique: true,
             required: true,
         },
-        link_certificado: {
+        link_curriculo: {
             type: String,
             required: true,
         }
