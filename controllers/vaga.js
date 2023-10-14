@@ -1,5 +1,6 @@
-import CandidaturaVaga from "../models/CandidaturaVaga";
-import Vaga from "../models/Vaga";
+import CandidaturaVaga from "../models/CandidaturaVaga.js";
+import Vaga from "../models/Vaga.js";
+import { createError } from "../utils/Error.js";
 
 export const createVagaLab = async (req, res, next) => {
     try {
@@ -7,7 +8,7 @@ export const createVagaLab = async (req, res, next) => {
             ...req.body
         });
   
-        await Vaga.save();
+        await newVaga.save();
         res.status(200).send(newVaga);
     } catch (err) {
         next(createError(400, "Erro ao criar vaga!"));
@@ -36,11 +37,17 @@ export const updateVagaLab = async (req, res, next) => {
 
 export const deleteVagaLab = async (req, res , next) => {
     try {
-        await Vaga.findByIdAndDelete(req.params.id);
+        const vaga = await Vaga.findById(req.params.id);
 
-        await CandidaturaVaga.deleteMany({ lab: req.params.id });
+        if (vaga) {
+            await Vaga.findByIdAndDelete(req.params.id);
 
-        res.status(200).json("Vaga foi deletada!")
+            await CandidaturaVaga.deleteMany({ lab: req.params.lab });
+
+            res.status(200).json("Vaga foi deletada!")
+        } else {
+            next(createError(400, "Vaga não existe ou já foi deletada!"));
+        }
     } catch (err) {
         next(err);
     }
@@ -48,9 +55,9 @@ export const deleteVagaLab = async (req, res , next) => {
 
 export const getVagaLab = async (req, res, next) => {
     try {
-        const vagasLab = await Vaga.find({ "user": req.params.lab, "id": req.params.id }).lean();
+        const vagaLab = await Vaga.find({ "lab": req.params.lab, "_id": req.params.id }).lean();
 
-        res.status(200).json(vagasLab);
+        res.status(200).json(vagaLab);
     } catch (err) {
         next(err);
     }
@@ -58,9 +65,9 @@ export const getVagaLab = async (req, res, next) => {
 
 export const getVagasLab = async (req, res, next) => {
     try {
-        const vagaLab = await Vaga.find({ "user": req.params.lab }).lean();
+        const vagasLab = await Vaga.find({ "lab": req.params.lab }).lean();
 
-        res.status(200).json(vagaLab);
+        res.status(200).json(vagasLab);
     } catch (err) {
         next(err);
     }
