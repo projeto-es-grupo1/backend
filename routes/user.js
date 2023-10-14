@@ -1,9 +1,16 @@
 import express from "express";
-import { verifyToken, verifyUser, verifyLab } from "../../utils/verifyToken.js";
+import { verifyUser } from "../utils/VerifyToken.js";
+import { deleteAccount, updateUserPassword, updateUsername } from "../controllers/user.js";
 
 const router = express.Router();
 
-// // UPDATE
-// router.put("/:id", verifyUser, updateUser); 
+// CHANGE USERNAME
+router.put("/change_username/:id", verifyUser, updateUsername); 
+
+// CHANGE PASSWORD
+router.put("/change_password/:id", verifyUser, updateUserPassword); 
+
+// DELETE ACCOUNT
+//router.delete("/delete_account/:id", verifyUser, deleteAccount); 
 
 export default router;
