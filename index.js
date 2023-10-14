@@ -8,6 +8,7 @@ import authRoute from "./routes/auth.js";
 import certificadoRoute from "./routes/certificadoUser.js";
 import curriculoRoute from "./routes/curriculo.js";
 import perfilRoute from "./routes/perfilUser.js";
+import userRoute from "./routes/user.js";
 
 const app = express();
 dotenv.config();
@@ -36,13 +37,14 @@ app.use("/api/auth", authRoute);
 app.use("/api/certificados", certificadoRoute);
 app.use("/api/curriculos", curriculoRoute);
 app.use("/api/perfil", perfilRoute);
+app.use("/api/user", userRoute);
 
 /*
 Candidatura
 Vaga
     Comentario
     Curtida
-User
+User => falta o delete: Depende de todas as rotas funcionando
 */
 
 app.use((err, req, res, next) => {

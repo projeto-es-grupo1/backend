@@ -1,5 +1,5 @@
-import User from "../models/User";
 import bcrypt from "bcryptjs";
+import User from "../models/User.js";
 
 export const updateUsername = async (req, res, next) => {
     try {
@@ -9,7 +9,7 @@ export const updateUsername = async (req, res, next) => {
             { new: true }
         );
 
-        if (!updatedPerfilUser) {
+        if (!updatedUsername) {
             return res.status(404).send("Usuário não encontrado");
         }
 
@@ -45,7 +45,7 @@ export const updateUserPassword = async (req, res, next) => {
 export const deleteAccount = async (req, res, next) => {
     try {
         await User.findByIdAndDelete(req.params.id);
-        
+
         res.status(200).send("Usuário deletado!");
     } catch (err) {
         next(err);
