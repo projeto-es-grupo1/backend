@@ -44,7 +44,7 @@ app.use("/api/vagas", vagasRoute);
 /*
 Candidatura
 Vaga => ok
-    + Comentario
+    + Comentario => em desenvolvimento
     + Curtida
 
 User => falta o delete: Depende de todas as rotas funcionando
