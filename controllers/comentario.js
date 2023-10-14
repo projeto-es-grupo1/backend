@@ -1,4 +1,4 @@
-import ComentarioVaga from "../models/ComentarioVaga";
+import ComentarioVaga from "../models/ComentarioVaga.js";
 
 export const createComentarioVaga = async (req, res, next) => {
     try {
@@ -31,29 +31,20 @@ export const updateComentarioVaga = async (req, res, next) => {
     }
 }
 
-export const deleteVagaLab = async (req, res , next) => {
+export const deleteComentarioVaga = async (req, res , next) => {
     try {
-        const vaga = await Vaga.findById(req.params.id);
-
-        if (vaga) {
-            await Vaga.findByIdAndDelete(req.params.id);
-
-            await CandidaturaVaga.deleteMany({ lab: req.params.lab });
-
-            res.status(200).json("Vaga foi deletada!")
-        } else {
-            next(createError(400, "Vaga não existe ou já foi deletada!"));
-        }
+        await ComentarioVaga.findByIdAndDelete(req.params.id);
+        res.status(200).json("Comentário foi deletado!")
     } catch (err) {
-        next(err);
+        next(createError(400, "Comentário não existe ou já foi deletado!"));
     }
 }
 
-export const getVagasLab = async (req, res, next) => {
+export const getCometariosVaga = async (req, res, next) => {
     try {
-        const vagasLab = await Vaga.find({ "lab": req.params.lab }).lean();
+        const Comentariosvagas = await ComentarioVaga.find({ "LabVaga": req.params.id_vaga }).lean();
 
-        res.status(200).json(vagasLab);
+        res.status(200).json(Comentariosvagas);
     } catch (err) {
         next(err);
     }

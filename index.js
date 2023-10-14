@@ -10,6 +10,7 @@ import curriculoRoute from "./routes/curriculo.js";
 import perfilRoute from "./routes/perfilUser.js";
 import userRoute from "./routes/user.js";
 import vagasRoute from "./routes/vaga.js";
+import comentarioRoute from "./routes/comentarioVaga.js";
 
 const app = express();
 dotenv.config();
@@ -40,7 +41,8 @@ app.use("/api/curriculos", curriculoRoute);
 app.use("/api/perfil", perfilRoute);
 app.use("/api/user", userRoute);
 app.use("/api/vagas", vagasRoute);
-
+app.use("/api/comentarios", comentarioRoute);
+ 
 /*
 Candidatura
 Vaga => ok
