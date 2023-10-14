@@ -1,6 +1,6 @@
 import express from "express";
 import { verifyUser } from "../utils/VerifyToken.js";
-import { createCurriculo, deleteCurriculoUser, getCurriculoUser, updateCurriculoUser } from "../controllers/curriculo.js";
+import { createCurriculoUser, deleteCurriculoUser, getCurriculoUser, updateCurriculoUser } from "../controllers/curriculo.js";
 
 const router = express.Router();
 
@@ -11,7 +11,7 @@ router.delete("/:user/:id", verifyUser, deleteCurriculoUser);
 router.put("/:user/:id", verifyUser, updateCurriculoUser); 
 
 // CREATE CURRICULO
-router.post("/:user", verifyUser, createCurriculo);
+router.post("/:user", verifyUser, createCurriculoUser);
 
 // GET CURRICULO
 router.get("/:user/:id", verifyUser, getCurriculoUser);

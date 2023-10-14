@@ -1,12 +1,8 @@
 import { createError } from "../utils/Error.js";
 import Curriculo from "../models/Curriculo.js";
 
-export const createCurriculo = async (req, res, next) => {
+export const createCurriculoUser = async (req, res, next) => {
     try {
-        const curriculo = await Curriculo.find({"user": req.params.user});
-
-        if (curriculo) return next(createError(400, "Apenas um currículo por usuário!"));
-
         const newCurriculo = new Curriculo({
             ...req.body
         });
@@ -14,7 +10,7 @@ export const createCurriculo = async (req, res, next) => {
         await newCurriculo.save();
         res.status(200).send(newCurriculo);
     } catch (err) {
-      next(err);
+        next(createError(400, "Apenas um currículo por usuário!"));
     }
 };
 
