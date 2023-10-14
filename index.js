@@ -38,12 +38,14 @@ app.use("/api/certificados", certificadoRoute);
 app.use("/api/curriculos", curriculoRoute);
 app.use("/api/perfil", perfilRoute);
 app.use("/api/user", userRoute);
+//adicionar rota de vaga
 
 /*
 Candidatura
 Vaga
-    Comentario
-    Curtida
+    + Comentario
+    + Curtida
+
 User => falta o delete: Depende de todas as rotas funcionando
 */
 
@@ -62,3 +64,52 @@ app.listen(8800, () => {
     connect();
     console.log("Connected to backend.");
 });
+
+
+/*
+ *      lab: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true,
+        },
+        titulo : {
+            type: String,
+            required: true,
+        },
+        descricao : {
+            type: String,
+            required: true,
+        },
+        localizacao : {
+            type: String,
+            required: true,
+        },
+        data_expiracao : {
+            type: Date,
+            required: true,
+        },
+        habilidades_requeridas : {
+            type: [String],
+            required: true,
+        },
+        habilidades_sugeridas : {
+            type: [String],
+            required: false,
+        },
+        qtd_vagas: {
+            type: Number,
+            required: true
+        },
+        area: {
+            type: String,
+            required: true
+        },
+        bolsa: {
+            type: Number,
+            required: true
+        },
+        carga_horaria: {
+            type: Number,
+            required: true
+        }
+ */
