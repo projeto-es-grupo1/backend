@@ -1,6 +1,6 @@
 import express from "express";
-import { verifyLab } from "../../utils/verifyToken.js";
 import { createVagaLab, deleteVagaLab, getVagaLab, getVagasLab, updateVagaLab } from "../controllers/vaga.js";
+import { verifyLab } from "../utils/VerifyToken.js";
 
 const router = express.Router();
 
@@ -11,7 +11,7 @@ router.post("/", verifyLab, createVagaLab);
 router.put("/:id", verifyLab, updateVagaLab); 
 
 // DELETE VAGA
-router.delete("/lab/:id", verifyLab, deleteVagaLab); // Falta deletar todas as candidaturas
+router.delete("/:lab/:id", verifyLab, deleteVagaLab);
 
 // GET VAGA
 router.get("/:lab/:id", getVagaLab); 
