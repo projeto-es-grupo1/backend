@@ -7,9 +7,9 @@ const CurtidaVaga = new mongoose.Schema(
             ref: "User",
             required: true,
         },
-        lab: {
+        labVaga: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
+            ref: "LabVaga",
             required: true,
         }
     },
