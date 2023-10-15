@@ -11,6 +11,7 @@ import perfilRoute from "./routes/perfilUser.js";
 import userRoute from "./routes/user.js";
 import vagasRoute from "./routes/vaga.js";
 import comentarioRoute from "./routes/comentarioVaga.js";
+import curtidasRoutes from "./routes/curtidaVaga.js";
 
 const app = express();
 dotenv.config();
@@ -42,14 +43,12 @@ app.use("/api/perfil", perfilRoute);
 app.use("/api/user", userRoute);
 app.use("/api/vagas", vagasRoute);
 app.use("/api/comentarios", comentarioRoute);
+app.use("/api/curtidas", curtidasRoutes);
+
  
 /*
-Candidatura
-Vaga => ok
-    + Comentario => em desenvolvimento
-    + Curtida
-
-User => falta o delete: Depende de todas as rotas funcionando
+    Candidatura
+    User => falta o delete: Depende de todas as rotas funcionando
 */
 
 app.use((err, req, res, next) => {
