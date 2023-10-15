@@ -11,6 +11,6 @@ router.put("/change_username/:id", verifyUser, updateUsername);
 router.put("/change_password/:id", verifyUser, updateUserPassword); 
 
 // DELETE ACCOUNT
-//router.delete("/delete_account/:id", verifyUser, deleteAccount); 
+router.delete("/delete_account/:id", verifyUser, deleteAccount); 
 
 export default router;

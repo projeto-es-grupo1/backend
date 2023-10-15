@@ -18,7 +18,7 @@ export const updatePerfilUser = async (req, res, next) => {
         const updatedPerfilUser = await PerfilUser.findByIdAndUpdate(
             req.params.id,
             { $set: req.body },
-            { new: true }
+            { new: false }
         );
 
         if (!updatedPerfilUser) {
@@ -30,7 +30,6 @@ export const updatePerfilUser = async (req, res, next) => {
         next(err);
     }
 }
-
 
 export const deletePerfilUser = async (req, res , next) => {
     try {

@@ -7,13 +7,15 @@ const CandidaturaVaga = new mongoose.Schema(
             ref: "User",
             required: true,
         },
-        lab: {
+        vaga: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
+            ref: "LabVaga",
             required: true,
         }
     },
     { timestamps: true }
 ); 
+
+CandidaturaVaga.index({ user: 1, vaga: 1 }, { unique: true });
 
 export default mongoose.model("CandidaturaVaga", CandidaturaVaga);

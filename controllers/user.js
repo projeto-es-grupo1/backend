@@ -1,5 +1,12 @@
 import bcrypt from "bcryptjs";
 import User from "../models/User.js";
+import CandidaturaVaga from "../models/CandidaturaVaga.js";
+import CertificadoUser from "../models/CertificadoUser.js";
+import ComentarioVaga from "../models/ComentarioVaga.js";
+import Curriculo from "../models/Curriculo.js";
+import CurtidaVaga from "../models/CurtidaVaga.js";
+import PerfilUser from "../models/PerfilUser.js";
+import Vaga from "../models/Vaga.js";
 
 export const updateUsername = async (req, res, next) => {
     try {
@@ -45,6 +52,14 @@ export const updateUserPassword = async (req, res, next) => {
 export const deleteAccount = async (req, res, next) => {
     try {
         await User.findByIdAndDelete(req.params.id);
+        await CandidaturaVaga.deleteMany({ "user": req.params.id });
+        await CertificadoUser.deleteMany({ "user": req.params.id });
+        await ComentarioVaga.deleteMany({ "user": req.params.id });
+        await Curriculo.deleteMany({ "user": req.params.id });
+        await CandidaturaVaga.deleteMany({ "user": req.params.id });
+        await CurtidaVaga.deleteMany({ "user": req.params.id });
+        await PerfilUser.deleteMany({ "user": req.params.id });
+        await Vaga.deleteMany({ "lab": req.params.id });
 
         res.status(200).send("Usuário deletado!");
     } catch (err) {
