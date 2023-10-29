@@ -15,16 +15,22 @@ export const createCertificadoUser = async (req, res, next) => {
 
 export const updateCertificadoUser = async (req, res, next) => {
     try {
-        const updateCertificadoUser = await CertificadoUser.findByIdAndUpdate(
+        const updatedCertificadoUser = await CertificadoUser.findByIdAndUpdate(
             req.params.id,
             { $set: req.body },
             { new: true }
         );
-        res.status(200).send(updateCertificadoUser);
+
+        if (!updatedCertificadoUser) {
+            return res.status(404).send("CertificadoUser não encontrado");
+        }
+
+        res.status(200).send(updatedCertificadoUser);
     } catch (err) {
         next(err);
     }
 }
+
 
 export const deleteCertificadoUser = async (req, res , next) => {
     try {
@@ -37,8 +43,9 @@ export const deleteCertificadoUser = async (req, res , next) => {
 
 export const getCertificadoUser = async (req, res, next) => {
     try {
-        const certificados = await CertificadoUser.find({"user": req.params.user, "._id": req.params.id}).lean();
-        res.status(200).json(certificados);
+        const certificado = await CertificadoUser.findById(req.params.id).lean();
+
+        res.status(200).json(certificado);
     } catch (err) {
         next(err);
     }

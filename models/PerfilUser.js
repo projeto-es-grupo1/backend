@@ -47,6 +47,10 @@ const PerfilUser = new mongoose.Schema(
         focando_em: {
             type: [String],
             required: false
+        },
+        mora: {
+            type: String,
+            required: false
         }
     },
     { timestamps: true }

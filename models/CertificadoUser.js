@@ -18,6 +18,10 @@ const CertificadoUser = new mongoose.Schema(
         area: {
             type: String,
             required: true
+        },
+        duracao: {
+            type: Number,
+            required: true
         }
     },
     { timestamps: true }

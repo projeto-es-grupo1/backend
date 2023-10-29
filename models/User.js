@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema(
         isLab: {
             type: Boolean,
             default: false,
-        },
+        }
     },
     { timestamps: true }
 ); 

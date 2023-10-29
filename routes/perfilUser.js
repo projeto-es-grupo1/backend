@@ -1,9 +1,19 @@
 import express from "express";
-import { verifyToken, verifyUser, verifyLab } from "../../utils/verifyToken.js";
+import { createPerfilUser, deletePerfilUser, getPerfilUser, updatePerfilUser } from "../controllers/perfil.js";
+import { verifyUser } from "../utils/VerifyToken.js";
 
 const router = express.Router();
 
-// // UPDATE
-// router.put("/:id", verifyUser, updateUser); 
+// CREATE PERFIL
+router.post("/", createPerfilUser); //OK
+
+// UPDATE PERFIL
+router.put("/:id", updatePerfilUser); //OK
+
+// DELETE PERFIL
+router.delete("/:id", deletePerfilUser); //OK
+
+// GET PERFIL
+router.get("/:user", getPerfilUser);  //OK
 
 export default router;

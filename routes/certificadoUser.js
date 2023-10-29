@@ -5,18 +5,18 @@ import { createCertificadoUser, deleteCertificadoUser, getAllCertificadoUser, ge
 const router = express.Router();
 
 // DELETE CERTIFICADO
-router.delete("/:id", verifyUser, deleteCertificadoUser); 
+router.delete("/:id", deleteCertificadoUser); 
 
 // UPDATE CERTIFICADO
-router.put("/:id", verifyUser, updateCertificadoUser); 
+router.put("/:id", updateCertificadoUser); 
 
 // CREATE CERTIFICADO
-router.post("/:user", verifyUser, createCertificadoUser);
+router.post("/:user", createCertificadoUser);
 
 // GET CERTIFICADO
-router.get("/:user/:id", verifyUser, getCertificadoUser);
+router.get("/:user/:id", getCertificadoUser);
 
 // GET ALL CERTIFICADOS
-router.get("/:user", verifyUser, getAllCertificadoUser);
+router.get("/:user", getAllCertificadoUser);
 
 export default router;
