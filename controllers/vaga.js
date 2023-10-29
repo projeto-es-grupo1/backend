@@ -72,3 +72,13 @@ export const getVagasLab = async (req, res, next) => {
         next(err);
     }
 };
+
+export const getTodasVagasLab = async (req, res, next) => {
+    try {
+        const vagasLab = await Vaga.find({}).lean();
+
+        res.status(200).json(vagasLab);
+    } catch (err) {
+        next(err);
+    }
+};

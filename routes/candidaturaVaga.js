@@ -5,19 +5,19 @@ import { createCandidatura, deleteCandidatura, getCandidatura, getCandidaturas, 
 const router = express.Router();
 
 // CREATE CANDIDATURA
-router.post("", verifyUser, createCandidatura); 
+router.post("", createCandidatura); // OK
 
 // DELETE CANDIDATURA
-router.delete("/:id", verifyUser, deleteCandidatura); 
+router.delete("/:id", deleteCandidatura); // OK
 
 // GET ALL CANDIDATURAS ORDENADAS
-router.get("/ordenadas/:vaga", verifyLab, getCandidaturasOrdenadas);
+router.get("/ordenadas/:vaga", getCandidaturasOrdenadas);
 
 // GET CANDIDATURA
-router.get("/:vaga/:id", verifyLab, getCandidatura); 
+router.get("/:vaga/:id", getCandidatura); 
 
 // GET ALL CANDIDATURAS
-router.get("/:vaga", verifyLab, getCandidaturas); 
+router.get("/:vaga", getCandidaturas); 
 
 
 

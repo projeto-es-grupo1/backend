@@ -31,3 +31,13 @@ export const getCurtida = async (req, res, next) => {
         next(err);
     }
 };
+
+export const getCurtidas = async (req, res, next) => {
+    try {
+        const curtida = await CurtidaVaga.find({ "labVaga": req.params.id }).lean();
+
+        res.status(200).json(curtida);
+    } catch (err) {
+        next(err);
+    }
+};

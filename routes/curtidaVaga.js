@@ -1,16 +1,18 @@
 import express from "express";
 import { verifyUser } from "../utils/VerifyToken.js";
-import { curtirVaga, descurtirVaga, getCurtida } from "../controllers/curtida.js";
+import { curtirVaga, descurtirVaga, getCurtida, getCurtidas } from "../controllers/curtida.js";
 
 const router = express.Router();
 
 // CURTIR VAGA
-router.post("", verifyUser, curtirVaga); 
+router.post("", curtirVaga); 
 
 // DESCURTIR VAGA
-router.delete("/:id", verifyUser, descurtirVaga); 
+router.delete("/:id", descurtirVaga); 
 
 // GET CURTIDA
-router.get("/:user/:id", verifyUser, getCurtida); 
+router.get("/:user/:id", getCurtida); 
+
+router.get("/:id", getCurtidas); 
 
 export default router;

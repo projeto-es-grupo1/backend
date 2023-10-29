@@ -27,7 +27,7 @@ export const deleteCandidatura = async (req, res , next) => {
 
 export const getCandidatura = async (req, res, next) => {
     try {
-        const candidatura = await CandidaturaVaga.find({"vaga": req.params.vaga, "_id": req.params.id}).lean();
+        const candidatura = await CandidaturaVaga.find({"vaga": req.params.vaga, "user": req.params.id}).lean();
         res.status(200).json(candidatura);
     } catch (err) {
         next(err);
@@ -42,6 +42,7 @@ export const getCandidaturas = async (req, res, next) => {
         next(err);
     }
 };
+
 export const getCandidaturasOrdenadas = async (req, res, next) => {
     try {
         const vaga = await Vaga.findById(req.params.vaga);

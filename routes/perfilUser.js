@@ -5,15 +5,15 @@ import { verifyUser } from "../utils/VerifyToken.js";
 const router = express.Router();
 
 // CREATE PERFIL
-router.post("/", verifyUser, createPerfilUser); 
+router.post("/", createPerfilUser); //OK
 
 // UPDATE PERFIL
-router.put("/:id", verifyUser, updatePerfilUser); 
+router.put("/:id", updatePerfilUser); //OK
 
 // DELETE PERFIL
-router.delete("/:id", verifyUser, deletePerfilUser); 
+router.delete("/:id", deletePerfilUser); //OK
 
 // GET PERFIL
-router.get("/:user", verifyUser, getPerfilUser); 
+router.get("/:user", getPerfilUser);  //OK
 
 export default router;
